@@ -4,7 +4,37 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="display: grid;
+    grid-template-columns: 1fr 1fr;">
+    <div>
+        <h1 style="padding: 1em">To Do</h1>
+        @foreach (var task in Model.Tasks)
+        {
+            @if (task.Status == "Pending")
+            {
+                <div class="task">
+                    <h5>@task.Title</h5>
+                    <h5>@task.Description</h5>
+                    <h5>@task.Date</h5>
+                </div>
+            }
+        }
+    </div>
+    <div>
+        <h1 style="padding: 1em">Completed</h1>
+        @foreach (var task in Model.Tasks)
+        {
+            @if (task.Status == "Complete")
+            {
+                <div class="task">
+                    <h5>@task.Title</h5>
+                    <h5>@task.Description</h5>
+                    <h5>@task.Date</h5>
+                </div>
+            }
+        }
+    </div>
+
 </div>
+
+
